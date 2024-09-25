@@ -1,0 +1,14 @@
+services:
+  spark-master:
+    image: my-spark-image
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+    command: "/opt/bitnami/spark/bin/spark-class org.apache.spark.deploy.master.Master"
+
+  spark-worker:
+    image: my-spark-image
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    depends_on:
+      - spark-master
