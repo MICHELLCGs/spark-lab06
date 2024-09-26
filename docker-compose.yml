@@ -1,6 +1,5 @@
 services:
 spark-master:
-  build: .
   image: my-spark-image
   ports:
     - "7077:7077"
@@ -14,7 +13,6 @@ spark-master:
 
 
 spark-worker:
-  build: .
   image: my-spark-image
   depends_on:
     - spark-master
