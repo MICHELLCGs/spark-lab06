@@ -27,9 +27,6 @@ spark-master:
     - AWS_SECRET_ACCESS_KEY=yim335s5RqRM93xfvmzJ/6bhf0jawOO9OUpZtveF
   command: ["/opt/bitnami/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
 
-
-
-
 spark-worker:
   build: .
   image: my-spark-image
