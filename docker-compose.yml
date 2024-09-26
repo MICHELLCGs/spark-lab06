@@ -15,7 +15,32 @@ services:
    build: .
    image: my-spark-image
    depends_on:
-     - spark-master
+     - spark-masterservices:
+spark-master:
+  build: .
+  image: my-spark-image
+  ports:
+    - "7077:7077"
+    - "8080:8080"
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAYM7R3K573EOPKA6Q
+    - AWS_SECRET_ACCESS_KEY=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
+  command: ["/opt/bitnami/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
+
+
+
+
+spark-worker:
+  build: .
+  image: my-spark-image
+  depends_on:
+    - spark-master
+  volumes:
+    - ./scripts:/opt/spark/scripts
+  environment:
+    - AWS_ACCESS_KEY_ID=AKIAYM7R3K573EOPKA6Q
+    - AWS_SECRET_ACCESS_KEY=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
+    - SPARK_MASTER_URL=spark://spark-master:7077
    environment:
      - AWS_ACCESS_KEY_ID=AKIAYM7R3K573EOPKA6Q
      - AWS_SECRET_ACCESS_KEY=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
