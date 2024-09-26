@@ -2,6 +2,7 @@ FROM bitnami/spark:latest
 
 
 USER root
+RUN apt-get update && apt-get install -y curl
 COPY start-spark.sh /opt/bitnami/scripts/spark/
 RUN chmod +x /opt/bitnami/scripts/spark/start-spark.sh
 
