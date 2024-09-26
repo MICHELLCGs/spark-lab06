@@ -6,8 +6,8 @@ services:
      - "7077:7077"
      - "8080:8080"
    environment:
-     - AWS_ACCESS_KEY_ID=your_access_key_id
-     - AWS_SECRET_ACCESS_KEY=your_secret_access_key
+     - AWS_ACCESS_KEY_ID=AKIAYM7R3K573EOPKA6Q
+     - AWS_SECRET_ACCESS_KEY=yim335s5RqRM93xfvmzJ/6bhf0jawOO9OUpZtveF
    command: ["/opt/bitnami/spark/bin/spark-class", "org.apache.spark.deploy.master.Master"]
 
 
@@ -17,6 +17,6 @@ services:
    depends_on:
      - spark-master
    environment:
-     - AWS_ACCESS_KEY_ID=your_access_key_id
-     - AWS_SECRET_ACCESS_KEY=your_secret_access_key
+     - AWS_ACCESS_KEY_ID=AKIAYM7R3K573EOPKA6Q
+     - AWS_SECRET_ACCESS_KEY=yim335s5RqRM93xfvmzJ/6bhf0jawOO9OUpZtveF
      - SPARK_MASTER_URL=spark://spark-master:7077
